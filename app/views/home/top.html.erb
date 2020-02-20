@@ -1,0 +1,32 @@
+<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-6">
+
+<h1>Welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers!</h1>
+
+<span>In<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Bookers<br>
+
+you can share and exchange your opinions , inpressions , and emotions<br>
+
+about various books!</span>
+
+
+
+
+   <%= link_to("Log in", new_user_session_path ,{class: "col-xs-12 btn-info btn"})  %>
+   <%= link_to("Sign Up", new_user_registration_path ,{class: "col-xs-12 btn-success btn"})  %>
+
+	<div class="col-lg-3">
+	</div>
+
+</div>
+</div>
+</div>

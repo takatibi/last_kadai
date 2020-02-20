@@ -1,0 +1,56 @@
+
+<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+	</div>
+	<% end %>
+
+
+	<h1>User info</h1>
+
+	<table class="table">
+		<tr>
+			<%= attachment_image_tag user, :profile_image, :fill, 100, 100 ,fallback: "noimage.png",size:'100x100'  %>
+		
+		</tr>
+		<tr>
+			<th>name</th><th><%= user.name %></th>
+		</tr>
+		<tr>
+			<th>introduction</th><th><%= user.introduction %></th>
+		</tr>
+	</table>
+
+
+<% if user.id == current_user.id %>
+	<%= link_to edit_user_path(current_user) do %>
+	<span class="glyphicon glyphicon-wrench col-xs-12 btn btn-default" aria-hidden="true"></span>
+	<% end %>
+<% else %>
+	<%= link_to user_path(current_user) do %>
+	<span class="glyphicon glyphicon-wrench col-xs-12 btn btn-default" aria-hidden="true"></span>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+	<h1>New book</h1>
+
+	<%= form_for(book) do |f| %>
+
+	<h4>Title</h4>
+	<%= f.text_field :title,class:"col-xs-12" %>
+
+
+	<h4>Opinion</h4>
+	<%= f.text_area :body,class:"col-xs-12" %>
+
+	<p><%= f.submit 'Create Book',class:"col-xs-12 bg-primary btn" %></p>
+
+	<% end %>

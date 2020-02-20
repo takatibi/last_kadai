@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kadai2App</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <div class="nav navbar-nav navbar-left">
+        <span>Bookers</span>
+      </div>
+      <% if user_signed_in? %>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <%= link_to  user_path(current_user.id) do %>
+        <li class="glyphicon glyphicon-home" aria-hidden="true">Home</li>
+        <% end %>
+
+        <%= link_to users_path do %>
+        <li class="glyphicon glyphicon-user" aria-hidden="true">Users</li>
+        <% end %>
+
+        <%= link_to  books_path do %>
+        <li class="glyphicon glyphicon-book" aria-hidden="true">Books</li>
+        <% end %>
+
+        <%= link_to destroy_user_session_path,method: :delete do%>
+        <li class="glyphicon glyphicon-log-out" aria-hidden="true">logout</li>
+        <% end %>
+      </ul>
+
+      <% else %>
+      <ul class="list-left">
+        <%= link_to root_path do %>
+        <li class="glyphicon glyphicon-home" aria-hidden="true">Home</li>
+        <% end %>
+
+        <%= link_to home_about_path do %>
+        <span class="glyphicon glyphicon-link" aria-hidden="true">About</span>
+        <% end %>
+
+        <%= link_to new_user_registration_path do %>
+        <span class="glyphicon glyphicon-edit" aria-hidden="true">sign up</span>
+        <% end %>
+
+        <%= link_to  new_user_session_path do %>
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true">login</span>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  </header>
+  <main>
+  <%= yield %>
+</main>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="col-lg-3"><p class="pull-right"> CopyRight Infratop.inc</p></div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
