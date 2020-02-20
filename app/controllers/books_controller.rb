@@ -3,10 +3,6 @@ class BooksController < ApplicationController
 before_action :authenticate_user!
 before_action :correct_user, only: [:edit, :update]
 
-   def new
-   	@book = Book.new
-
-   end
 
    def create
    	@book = Book.new(book_params)
