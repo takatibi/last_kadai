@@ -53,7 +53,6 @@ before_action :correct_user, only: [:edit, :update]
    end
 
     def correct_user
-    @user = User.find(params[:id])
     @book = Book.find(params[:id])
     if   current_user != @book.user
       redirect_to books_path
