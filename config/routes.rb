@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'home/top'
   get 'home/about'
   devise_for :users
-  resources :books
+  resources :books do
+    resources :comments, only:[:create, :destroy]
+  	resource :favorites, only:[:create, :destroy]
+  end
   resources :users
 
   # root 'post_images#index'

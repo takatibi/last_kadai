@@ -8,4 +8,7 @@ class User < ApplicationRecord
   validates :name, length: { in: 2..20}
   validates :name, presence: true
   validates :introduction, length: { maximum: 50 }
+
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
