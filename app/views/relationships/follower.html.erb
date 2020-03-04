@@ -1,0 +1,8 @@
+<%= @users.each do |user| %>
+<table>
+	<tr>
+		<td> <%= user.name %> </td>
+		</td> <%= link_to "ホーム画面", user_path(user) %></tr>
+	</tr>
+</table>
+<% end %>

@@ -41,6 +41,7 @@ before_action :correct_user, only: [:edit, :update]
       @comments = @book.comments.page(params[:page]).reverse_order
       @book_new = Book.new
       @comment = Comment.new
+      @user = @book.user
    end
 
    def destroy

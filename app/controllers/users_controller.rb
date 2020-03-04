@@ -18,6 +18,21 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
+    def following
+    @user = User.find(params[:id])
+    @users = @user.followings
+    # redirect_back(fallback_location: books_path)
+  end
+
+  def follower
+    @user = User.find(params[:id])
+    @users = @user.followers
+    # redirect_back(fallback_location: books_path)
+  end
+
+
+
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
