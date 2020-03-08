@@ -57,9 +57,23 @@
       <% end %>
     </div>
   </header>
+
   <main>
+      <div class="text-center">
+        <% if user_signed_in? %>
+
+          <%= form_tag(search_path,:method => 'get') do %>
+          <%= text_field_tag :search_content %>
+           <%= select_tag :search_model, options_for_select([["Book", "book"],["User","user"]]) %>
+           <%= select_tag :search_method,  options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+          <%= submit_tag '検索' %>
+          <% end %>
+          <% end %>
+        </div>
+
   <%= yield %>
 </main>
+
 <footer>
   <div class="container">
     <div class="row">
@@ -71,3 +85,37 @@
 </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

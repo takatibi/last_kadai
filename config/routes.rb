@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to:'home#top'
   get 'home/top'
   get 'home/about'
+  get 'search' => "search#search"
   devise_for :users
     resources :books do
     resources :comments, only:[:create, :destroy]
