@@ -28,10 +28,10 @@
 		     <% elsif @users %>
 			  <% @users.each do |user| %>
 					<tr>
-						<td><%= link_to book_path(user) do %>
+						<td><%= link_to user_path(user) do %>
 							<%= attachment_image_tag user, :profile_image, :fill, 100,100 ,fallback: "noimage.png",size:'100x100' %>
 							<% end %></td>
-						<td><%= link_to user.name, book_path(user) %></td>
+						<td><%= link_to user.name, user %></td>
 					</tr>
 			  <% end %>
 			  <% end %>

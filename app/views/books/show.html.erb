@@ -37,11 +37,6 @@
 							<% end %>
 						</td>
 								<td>コメント数:<%= @book.comments.count %></td>
-							
-
-
-
-
 						<% if @book.user.id == current_user.id %>
 						<td><%= link_to"Edit",edit_book_path(@book) %></td>
 						<td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
@@ -50,25 +45,39 @@
 				</tbody>
 			</table>
 
-			<% @comments.each do |comment| %>
-			<div class="comment-text">
-				<span><%= comment.user.name %><br></span>
-				<span><%= comment.created_at.strftime('%Y/%m/%d') %><br></span>
-				<span><%= comment.comment %><br></span>
-				<% if current_user == comment.user %>
-				<span><%= link_to "削除", book_comment_path(book_id: @book.id, id: comment.id), method: :delete %><br></span>
-				<% end %>
+			<div id="comment">
+				<%= render "books/comment", book: @book %>
 			</div>
-			<% end %>
-			<%= paginate @comments, class: "paginate" %>
-
-			<%= form_for [@book, @comment] do |f| %>
-				<%= f.text_area :comment %>
-				<%= f.submit "送信" ,class: "btn" %>
+			<%= form_with(model: [@book, @comment], remote: true) do |f| %>
+				<div id="js-text-area"> <%= f.text_area :comment %> </div>
+				<div class="js-submit"> <%= f.submit "送信" ,class: "btn" %> </div>
 			<% end %>
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

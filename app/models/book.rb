@@ -23,13 +23,13 @@ class Book < ApplicationRecord
                  return  Book.where("title LIKE?","%#{word}")
 
                 elsif method == "perfect_match"
-                 return  Book.where("#{word}")
+                 return  Book.where(title: "#{word}")
 
                 elsif method == "partial_match"
                  return   Book.where("title LIKE?","%#{word}%")
 
                 else
-                    return   Book.all
+                 return   Book.all
                 end
     end
 

@@ -10,7 +10,7 @@
 
 	<table class="table">
 		<tr>
-			<%= attachment_image_tag user, :profile_image, :fill, 100, 100 ,fallback: "noimage.png",size:'100x100'  %>
+			<%= attachment_image_tag user, :profile_image, :fill, 200, 200 ,fallback: "noimage.png",size:'200x200'  %>
 		
 		</tr>
 		<tr>
@@ -31,6 +31,7 @@
 	<span class="glyphicon glyphicon-wrench col-xs-12 btn btn-default" aria-hidden="true"></span>
 	<% end %>
 <% end %>
+
 <% user ||= current_user %>
 <div class="stats">
   <a href="<%= following_user_path(user) %>">

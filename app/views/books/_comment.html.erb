@@ -1,0 +1,11 @@
+<% book.comments.page(params[:page]).reverse_order.each do |comment| %>
+
+<div class="comment-text">
+		<span> <%= comment.user.name %> <br> </span>
+		<span> <%= comment.created_at.strftime('%Y/%m/%d') %> <br> </span>
+		<span> <%= comment.comment %> <br> </span>
+	<% if current_user == comment.user %>
+		<span> <%= link_to "削除", book_comment_path(book_id: book.id, id: comment.id), method: :delete ,remote:true %> <br> </span>
+		<% end %>
+</div>
+<% end %>

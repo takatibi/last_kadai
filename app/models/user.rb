@@ -44,7 +44,7 @@ class User < ApplicationRecord
                 elsif method == "backward_match"
                      return  User.where("name LIKE?","%#{word}")
                 elsif method == "perfect_match"
-                     return  User.where("#{word}")
+                     return  User.where(name: "#{word}")
                 elsif method == "partial_match"
                      return  User.where("name LIKE?","%#{word}%")
                 else

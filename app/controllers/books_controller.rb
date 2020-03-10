@@ -18,7 +18,7 @@ before_action :correct_user, only: [:edit, :update]
    end
 
    def index
-   	  @books = Book.all
+   	  @books = Book.all.order(id: "DESC")
       @book = Book.new
    end
 
@@ -38,7 +38,6 @@ before_action :correct_user, only: [:edit, :update]
 
    def show
    	  @book = Book.find(params[:id])
-      @comments = @book.comments.page(params[:page]).reverse_order
       @book_new = Book.new
       @comment = Comment.new
       @user = @book.user
